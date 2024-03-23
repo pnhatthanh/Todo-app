@@ -67,8 +67,7 @@ img {
     height: 100%;
     position: relative;
     transform: translateY(20%);
-    position: relative;
-    z-index: 2;
+    background-color: #ffff;
 
 }
 .form {
@@ -156,5 +155,10 @@ img {
     z-index: -1;
     bottom: 2%;
     left: 75%;
-
+}
+.sect-top{
+    height: 10%;
+    position: absolute;
+    top: 0;
+    left: 30%;
 }
