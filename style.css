@@ -157,8 +157,14 @@ img {
     left: 75%;
 }
 .sect-top{
-    height: 10%;
+    height: 30%;
     position: absolute;
-    top: 0;
-    left: 30%;
+    top: 7%;
+    left: 35%;
+}
+.s{
+    height: 30%;
+    position: absolute;
+    bottom: 7%;
+    left: 18%;
 }
