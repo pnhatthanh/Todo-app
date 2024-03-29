@@ -1,0 +1,143 @@
+body{
+    margin: 0;
+    max-width: 1400px;
+    margin: auto;
+    font-family: Plus Jakarta Sans;
+}
+header{
+    padding-top: 30px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+header img{
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+.logo-task{
+    max-height: 60px;
+}
+header .solugan{
+    height: 23px;
+    font-size: 20px;
+    margin: 0;
+}
+.new-task{
+    font-size: 20px;
+}
+main{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.task{
+    width: 23%;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+    border-radius: 4px;
+    color: #fff;
+    margin-bottom: 13px;
+}
+.count-task{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 4px;
+}
+.line{
+    height: 2px;
+    width: 100%;
+}
+
+main div:nth-child(1) .title{
+    background-color: #00A6DA;
+}
+main div:nth-child(1) .count-task{
+    background-color: #5fb8d3;
+}
+main div:nth-child(1) .line{
+    background-color: #00A6DA;
+}
+main div:nth-child(2) .title{
+    background-color: #CCAC038F;
+}
+main div:nth-child(2) .count-task{
+    background-color: #856f038f;
+}
+main div:nth-child(2) .line{
+    background-color: #CCAC038F;
+}
+main div:nth-child(3) .title{
+    background-color: #3BC057;
+}
+main div:nth-child(3) .count-task{
+    background-color: #6ecf83;
+}
+main div:nth-child(3) .line{
+    background-color: #3BC057;
+}
+main div:nth-child(4) .title{
+    background-color: #E74C3C;
+}
+main div:nth-child(4) .count-task{
+    background-color: #921406;
+}
+main div:nth-child(4) .line{
+    background-color: #E74C3C;
+}
+.task-item{
+    margin-top: 30px;
+    box-shadow: 0px 4px 4px 0px #0000001a;
+    border-radius: 8px;
+}
+.task-title{
+    display: flex;
+    padding: 10px 20px 0px;
+}
+.task-category{
+    font-size: 14px;
+    color: #4D8EFF;
+    border-bottom: solid #4D8EFF 1px;
+    font-weight: 800;
+}
+.task-title h3{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #DBDBDB;
+}
+.task-action{
+    width: 30%;
+    text-align: right;
+}
+.task-action img{
+    width: 24px;
+    height: 24px;
+}
+.task-action img:nth-child(1){
+    margin-right: 8px;
+}
+.task-des{
+    padding: 10px 20px 40px;
+    font-size: 12px;
+    font-weight: 400;
+}
+.time img{
+    height: 14px;
+    width: 14px;
+    margin-right: 5px;
+}
+
+
+
+
+
