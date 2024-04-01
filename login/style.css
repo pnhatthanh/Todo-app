@@ -27,12 +27,16 @@ body{
     max-width: 50%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(6, auto);
-    gap: 0;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     border-radius: 25px;
     overflow: hidden;
     position: relative;
+}
+.sect-img>img{
+    height: 100px;
+    width: 150px;
+    object-fit: fill;
 }
 .sect-img::after{
     background: #D1DFECE5;
@@ -97,6 +101,7 @@ img {
     margin-top: 5px;
     width: 100%;
     padding: 8px 15px;
+    font-size: 18px;
     font-family: Roboto;
     font-weight: 400;
     line-height: 22px;

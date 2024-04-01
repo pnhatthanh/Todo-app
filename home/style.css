@@ -223,6 +223,12 @@ main div:nth-child(4) .line{
     padding: 2px 4px;
     margin-bottom: 10px;
 }
+.valid{
+    border: 2px solid green;
+}
+.invalid{
+    border: 2px solid red;
+}
 
 
 
