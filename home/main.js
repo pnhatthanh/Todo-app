@@ -31,6 +31,7 @@ textArea.addEventListener('blur',()=>{
 })
 submit.addEventListener('click',()=>{
     if(checkSubmit()){
+        addTodo();
         closeBox();
     }
 })
@@ -55,4 +56,70 @@ function checkInput(input) {
         input.classList.add('valid')
         return true;
     }
+}
+
+function getListTodo(){
+    if (localStorage.getItem("todo")) {
+        return JSON.parse(localStorage.getItem("todo"));
+    } else {
+        return [];
+    }
+}
+function saveTodo(todoList){
+    localStorage.setItem('todo',JSON.stringify(todoList))
+}
+function getListDoing(){
+    if (localStorage.getItem("doing")) {
+        return JSON.parse(localStorage.getItem("doing"));
+    } else {
+        return [];
+    }
+}
+function saveDoing(todoList){
+    localStorage.setItem('doing',JSON.stringify(todoList))
+}
+function getListCompleted(){
+    if (localStorage.getItem("completed")) {
+        return JSON.parse(localStorage.getItem("completed"));
+    } else {
+        return [];
+    }
+}
+function saveCompleted(todoList){
+    localStorage.setItem('completed',JSON.stringify(todoList))
+}
+function getListBlocked(){
+    if (localStorage.getItem("blocked")) {
+        return JSON.parse(localStorage.getItem("blocked"));
+    } else {
+        return [];
+    }
+}
+function saveBlocked(todoList){
+    localStorage.setItem('blocked',JSON.stringify(todoList))
+}
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+
+    const options = { 
+        year: 'numeric',
+        month: 'long', 
+        day: 'numeric' 
+    };
+    return date.toLocaleDateString('en-US', options);
+}
+function Task(category,title,content,datetime){
+    this.category=category;
+    this.title=title;
+    this.content=content;
+    this.datetime=formatDate(datetime);
+}
+function addTodo(){
+    const category=document.getElementById('category').value;
+    const title=document.getElementById('title').value;
+    const content=document.getElementById('content').value;
+    const task= new Task(category,title,content,Date.now());
+    const todoList=getListTodo();
+    todoList.push(task);
+    saveTodo(todoList);
 }
