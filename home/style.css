@@ -122,6 +122,10 @@ main div:nth-child(4) .line{
 .task-title{
     display: flex;
     padding: 10px 20px 0px;
+    justify-content: space-between;
+}
+.task-title div:nth-child(1){
+    width: 70%;
 }
 .task-category{
     font-size: 14px;
