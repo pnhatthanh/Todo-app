@@ -1,5 +1,5 @@
 var new_task = document.querySelector(".new-task");
-const inputs = document.querySelectorAll('input');
+const inputs = document.querySelectorAll('.input');
 const textArea = document.querySelector('textarea');
 const submit = document.getElementById('submit');
 const todo = document.getElementById('todo');
@@ -7,15 +7,18 @@ const doing=document.getElementById('doing');
 const completed=document.getElementById('completed');
 const blocked=document.getElementById('blocked');
 new_task.addEventListener('click', () => {
+    document.getElementById('box-title').textContent='Add new todo';
+    document.querySelector(".edit-status").style.display = 'none';
     document.querySelector(".box").style.display = 'block';
-    document.body.style.overflow = 'hidden';
 })
 document.querySelector(".close").addEventListener('click', closeBox)
 document.querySelector(".box").addEventListener('click', closeBox)
 document.querySelector(".box-add").addEventListener('click', () => {
     event.stopPropagation();
 })
+var _id=-1;
 function closeBox() {
+    _id=-1;
     document.querySelector(".box").style.display = 'none';
     document.body.style.overflow = 'auto';
     inputs.forEach(input => {
@@ -35,7 +38,11 @@ textArea.addEventListener('blur', () => {
 })
 submit.addEventListener('click', () => {
     if (checkSubmit()) {
-        addTodo();
+        if(_id>=0){
+            updateTask();
+        }else{
+            addTodo();
+        }
         refresh();
         closeBox();
     }
@@ -106,7 +113,6 @@ function addTodo() {
     todoList.push(task);
     saveTask(todoList);
 }
-
 var itemTemplate = (data) => {
     return `<div class="task-item">
         <div class="task-title">
@@ -115,7 +121,7 @@ var itemTemplate = (data) => {
             <h3>${data.title}</h3>
         </div>
         <div class="task-action">
-            <img src="/asset/update.png" alt="update" onclick=editTask(${data.idTask})>
+            <img src="/asset/update.png" alt="update" onclick=displayEdit(${data.idTask})>
             <img src="/asset//delete.png" alt="delete" id="delete" onclick=deltask(${data.idTask})>
         </div>
     </div>
@@ -171,19 +177,32 @@ function deltask(id){
     saveTask(task);
     refresh();
 }
-// function editTask(id){
-//     document.querySelector(".box").style.display = 'block';
-//     let tasks=getListTasks();
-//     let updateTask=tasks.find(task => task.idTask==id);
-//     if(updateTask){ 
-//         document.getElementById('category').value=updateTask.category;
-//         document.getElementById('title').value=updateTask.title;
-//         document.getElementById('content').value=updateTask.content;
-//         document.querySelectorAll("input[name=status]").forEach((radio) => {
-//             if (radio.value == updateTask.taskStatus) {
-//                 radio.checked = true;
-//             } 
-//         });
-        
-//     }
-// }
+function displayEdit(id){
+    _id=id;
+    document.getElementById('box-title').textContent='Edit to do';
+    document.querySelector(".edit-status").style.display = 'flex';
+    document.querySelector(".box").style.display = 'block';
+    let tasks=getListTasks();
+    let task=tasks.find(task => task.idTask==id);
+    if(task){ 
+        document.getElementById('category').value=task.category;
+        document.getElementById('title').value=task.title;
+        document.getElementById('content').value=task.content;
+        document.querySelectorAll("input[name=status]").forEach((radio) => {
+            if (radio.value == task.taskStatus) {
+                radio.checked = true;
+            } 
+        });
+    }
+}
+function updateTask(){
+    let tasks=getListTasks();
+    let task=tasks.find(task => task.idTask==_id);
+    task.category=document.getElementById('category').value;
+    task.title=document.getElementById('title').value;
+    task.content=document.getElementById('content').value;
+    task.taskStatus=document.querySelector('input[name=status]:checked').value;
+    const idnex=tasks.findIndex(task=>task.idTassk==_id);
+    tasks[idnex]=task;
+    saveTask(tasks);
+}
