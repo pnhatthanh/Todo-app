@@ -233,6 +233,16 @@ main div:nth-child(4) .line{
 .invalid{
     border: 2px solid red;
 }
+.edit-status{
+    
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    display: none;
+}
+.edit-status input{
+    width: auto;
+}
 
 
 

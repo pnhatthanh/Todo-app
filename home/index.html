@@ -32,7 +32,7 @@
             <div class="task">
                 <div class="title">
                     <span>Todo</span>
-                    <span class="count-task">0</span>
+                    <span class="count-task" id="countTodo"></span>
                 </div>
                 <div class="line"></div>
                 <div class="task-list" id="todo">
@@ -42,33 +42,16 @@
             <div class="task">
                 <div class="title">
                     <span>Doing</span>
-                    <span class="count-task">3</span>
+                    <span class="count-task" id="countDoing"></span>
                 </div>
                 <div class="line"></div>
                 <div class="task-list" id="doing">
-                    <!-- <div class="task-item">
-                        <div class="task-title">
-                            <div>
-                                <span class="task-category">Marketing</span>
-                                <h3>Write SEO article for new product</h3>
-                            </div>
-                            <div class="task-action">
-                                <img src="/asset/update.png" alt="update">
-                                <img src="/asset//delete.png" alt="delete">
-                            </div>
-                        </div>
-                        <div class="task-des">
-                            <p>This is an existential moment for effective altruism and the rationalist community writ-large
-                            </p>
-                            <span class="time"><img src="/asset/clock.png" alt="clock">June 30, 2022</span>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="task">
                 <div class="title">
                     <span>Completed</span>
-                    <span class="count-task">3</span>
+                    <span class="count-task" id="countCompleted"></span>
                 </div>
                 <div class="line"></div>
                 <div class="task-list" id="completed">
@@ -78,7 +61,7 @@
             <div class="task">
                 <div class="title">
                     <span>Blocked</span>
-                    <span class="count-task">3</span>
+                    <span class="count-task" id="countBlocked"></span>
                 </div>
                 <div class="line"></div>
                 <div class="task-list" id="blocked">
@@ -93,6 +76,24 @@
             <input id="category" type="text" placeholder="Category. Etc: Marketing...">
             <input id="title" type="text" placeholder="Title">
             <textarea id="content" placeholder="Content" rows="4"></textarea>
+            <div class="edit-status">
+                <div>
+                    <input type="radio" id="1" name="status" value="Todo">
+                     <label for="1">Todo</label>
+                </div>
+                <div>
+                    <input type="radio" id="2" name="status" value="Doing">
+                     <label for="2">Doing</label>
+                </div>
+                <div>
+                    <input type="radio" id="3" name="status" value="Completed">
+                     <label for="3">Completed</label>
+                </div>
+                <div>
+                    <input type="radio" id="4" name="status" value="Blocked">
+                     <label for="4">Blocked</label>
+                </div>
+            </div>
             <button id="submit">Submit</button>
         </div>
     </div>

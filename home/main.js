@@ -115,7 +115,7 @@ var itemTemplate = (data) => {
             <h3>${data.title}</h3>
         </div>
         <div class="task-action">
-            <img src="/asset/update.png" alt="update">
+            <img src="/asset/update.png" alt="update" onclick=editTask(${data.idTask})>
             <img src="/asset//delete.png" alt="delete" id="delete" onclick=deltask(${data.idTask})>
         </div>
     </div>
@@ -127,22 +127,30 @@ var itemTemplate = (data) => {
 }
 function refresh() {
     var txt_todo="";
+    let countTodo=0;
     var txt_doing="";
+    let countDoing=0;
     var txt_completed="";
+    let countCompleted=0;
     var txt_blocked="";
+    let countBlocked=0;
     const task = getListTasks();
     task.forEach((t) => {
         switch (t.taskStatus){
             case "Todo":
+                countTodo++;
                 txt_todo+=itemTemplate(t);
                 break;
             case "Doing":
+                countDoing++;
                 txt_doing+=itemTemplate(t);
                 break;
             case "Completed":
+                countCompleted++;
                 txt_completed+=itemTemplate(t);
                 break;
             case "Blocked":
+                countBlocked++;
                 txt_blocked+=itemTemplate(t);
                 break;
         }
@@ -151,12 +159,31 @@ function refresh() {
     doing.innerHTML=txt_doing;
     completed.innerHTML=txt_completed;
     blocked.innerHTML=txt_blocked;
+    document.getElementById('countTodo').textContent=countTodo;
+    document.getElementById('countDoing').textContent=countDoing;
+    document.getElementById('countCompleted').textContent=countCompleted;
+    document.getElementById('countBlocked').textContent=countBlocked;
 }
 refresh();
-
 function deltask(id){
     let task=getListTasks();
     task=task.filter((value)=>value.idTask!=id);
     saveTask(task);
     refresh();
 }
+// function editTask(id){
+//     document.querySelector(".box").style.display = 'block';
+//     let tasks=getListTasks();
+//     let updateTask=tasks.find(task => task.idTask==id);
+//     if(updateTask){ 
+//         document.getElementById('category').value=updateTask.category;
+//         document.getElementById('title').value=updateTask.title;
+//         document.getElementById('content').value=updateTask.content;
+//         document.querySelectorAll("input[name=status]").forEach((radio) => {
+//             if (radio.value == updateTask.taskStatus) {
+//                 radio.checked = true;
+//             } 
+//         });
+        
+//     }
+// }
