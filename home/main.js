@@ -11,6 +11,9 @@ new_task.addEventListener('click', () => {
     document.querySelector(".edit-status").style.display = 'none';
     document.querySelector(".box").style.display = 'block';
 })
+document.querySelector(".logout").addEventListener('click',()=>{
+    window.location.href='/login/login.html';
+})
 document.querySelector(".close").addEventListener('click', closeBox)
 document.querySelector(".box").addEventListener('click', closeBox)
 document.querySelector(".box-add").addEventListener('click', () => {
