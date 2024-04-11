@@ -6,6 +6,7 @@ const todo = document.getElementById('todo');
 const doing=document.getElementById('doing');
 const completed=document.getElementById('completed');
 const blocked=document.getElementById('blocked');
+const items=document.getElementsByClassName("task-item");
 new_task.addEventListener('click', () => {
     document.getElementById('box-title').textContent='Add new todo';
     document.querySelector(".edit-status").style.display = 'none';
@@ -117,7 +118,8 @@ function addTodo() {
     saveTask(todoList);
 }
 var itemTemplate = (data) => {
-    return `<div class="task-item">
+    return `<div class="task-item" draggable="true">
+        <span style="display: none;">${data.idTask}</span>
         <div class="task-title">
         <div>
             <span class="task-category">${data.category}</span>
@@ -208,4 +210,37 @@ function updateTask(){
     const idnex=tasks.findIndex(task=>task.idTassk==_id);
     tasks[idnex]=task;
     saveTask(tasks);
+}
+for (_item of items) {
+    _item.addEventListener("dragstart", e => {
+        let selected = e.target;
+        todo.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+        todo.addEventListener("drop", e => {
+            todo.appendChild(selected);
+            selected = null;
+        });
+        doing.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+        doing.addEventListener("drop", e => {
+            doing.appendChild(selected);
+            selected = null;
+        });
+        completed.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+        completed.addEventListener("drop", e => {
+            completed.appendChild(selected);
+            selected = null;
+        });
+        blocked.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+        blocked.addEventListener("drop", e => {
+            blocked.appendChild(selected);
+            selected = null;
+        });
+    });
 }
