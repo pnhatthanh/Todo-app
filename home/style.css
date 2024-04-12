@@ -11,12 +11,10 @@ body{
 
 }
 header{
-    padding-top: 30px;
-    height: 100px;
+    padding-top: 30px;   
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
 }
 header img{
     width: auto;
@@ -47,8 +45,9 @@ main{
     width: 23%;
 }
 .task-list{
+    min-height: 50px;
     margin-top: 30px;
-    height: 470px;
+    max-height: 470px;
     overflow-y: auto;
 }
 .task-list::-webkit-scrollbar{
@@ -249,16 +248,61 @@ main div:nth-child(4) .line{
     align-items: flex-end;
 }
 .logout{
-    margin-top: 15px;
     padding: 8px;
     background-color: #d46e29;
     color: #fff;
     border-radius: 2px;
     font-weight: 700;
+    margin-bottom: 10px;
 }
 .logout:hover{
     cursor: pointer;
     background-color: #9c6a48;
+}
+@media only screen and (max-width: 1200px){
+    .container{
+        max-width: 1000px;
+    }
+    .task-action{
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 750px){
+    header{
+        padding-top: 10px;
+        flex-wrap: wrap;
+    }
+    header>div{
+        width: 100%;
+        text-align: center;
+    }
+    header .solugan{
+        font-size: 16px;
+    }
+    .header-right{
+        margin-top: 10px;
+        align-items: center;
+    }
+    .new-task{
+        padding: 6px;
+        border: 1px solid rgb(68, 66, 66);
+        border-radius: 5px;
+    }
+    main{
+        flex-wrap: wrap;
+    }
+    main .task{
+        width: 100%;
+        margin: 0 10px;
+    }
+    .task-list{
+        margin-top:20px;
+        max-height: 350px;
+    }
+    .box-add{
+        width: 80%;
+    }
+
 }
 
 
