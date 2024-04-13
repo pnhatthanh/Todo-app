@@ -119,8 +119,8 @@ function addTodo() {
 }
 var itemTemplate = (data) => {
     return `<div class="task-item" draggable="true">
-        <span style="display: none;">${data.idTask}</span>
-        <div class="task-title">
+    <span style="display: none;" id="idTask">${data.idTask}</span>
+    <div class="task-title">
         <div>
             <span class="task-category">${data.category}</span>
             <h3>${data.title}</h3>
@@ -211,36 +211,64 @@ function updateTask(){
     tasks[idnex]=task;
     saveTask(tasks);
 }
-for (_item of items) {
-    _item.addEventListener("dragstart", e => {
-        let selected = e.target;
-        todo.addEventListener("dragover", e => {
-            e.preventDefault();
-        });
-        todo.addEventListener("drop", e => {
-            todo.appendChild(selected);
-            selected = null;
-        });
-        doing.addEventListener("dragover", e => {
-            e.preventDefault();
-        });
-        doing.addEventListener("drop", e => {
-            doing.appendChild(selected);
-            selected = null;
-        });
-        completed.addEventListener("dragover", e => {
-            e.preventDefault();
-        });
-        completed.addEventListener("drop", e => {
-            completed.appendChild(selected);
-            selected = null;
-        });
-        blocked.addEventListener("dragover", e => {
-            e.preventDefault();
-        });
-        blocked.addEventListener("drop", e => {
-            blocked.appendChild(selected);
-            selected = null;
-        });
+let selected = null;
+
+for (const item of items) {
+    item.addEventListener("dragstart", e => {
+        selected = e.target;
     });
+}
+todo.addEventListener("dragover", e => {
+    e.preventDefault();
+});
+todo.addEventListener("drop", e => {
+    if (selected != null) {
+        todo.appendChild(selected);
+        updateStatus(getIdTask(selected), statusTask.Todo);
+        selected = null;
+    }
+});
+doing.addEventListener("dragover", e => {
+    e.preventDefault();
+});
+doing.addEventListener("drop", e => {
+    if (selected != null) {
+        doing.appendChild(selected);
+        console.log(selected);
+        updateStatus(getIdTask(selected), statusTask.Doing);
+        selected = null;
+    }
+});
+completed.addEventListener("dragover", e => {
+    e.preventDefault();
+});
+completed.addEventListener("drop", e => {
+    if (selected != null) {
+        completed.appendChild(selected);
+        updateStatus(getIdTask(selected), statusTask.Completed);
+        selected = null;
+    }
+});
+blocked.addEventListener("dragover", e => {
+    e.preventDefault();
+});
+blocked.addEventListener("drop", e => {
+    if (selected != null) {
+        blocked.appendChild(selected);
+        console.log(selected);
+        updateStatus(getIdTask(selected), statusTask.Blocked);
+        selected = null;
+    }
+});
+function getIdTask(selectedItem) {
+    return selectedItem.querySelector('#idTask').textContent;
+}
+function updateStatus(__idItem, __status) {
+    let __tasks=getListTasks();
+    let __task=__tasks.find(ta => ta.idTask==__idItem);
+    const __idnex=__tasks.findIndex(task=>task.idTask==_id);
+    __task.taskStatus=__status;
+    __tasks[__idnex]=__task;
+    saveTask(__tasks);
+    window.location.reload();
 }
