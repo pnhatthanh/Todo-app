@@ -73,7 +73,7 @@ btn.addEventListener('click', () => {
         })
         .then(res=>{
             if(res.status=='ok'){
-                window.location.href = "/home/index.html";
+                window.location.href = "./home/index.html";
             }else{
                 throw new Error('Failed');
             }
