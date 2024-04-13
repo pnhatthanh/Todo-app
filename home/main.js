@@ -127,12 +127,12 @@ var itemTemplate = (data) => {
         </div>
         <div class="task-action">
             <img src="../asset/update.png" alt="update" onclick=displayEdit(${data.idTask})>
-            <img src="../asset//delete.png" alt="delete" id="delete" onclick=deltask(${data.idTask})>
+            <img src="../asset/delete.png" alt="delete" id="delete" onclick=deltask(${data.idTask})>
         </div>
     </div>
     <div class="task-des">
         <p>${data.content}</p>
-        <span class="time"><img src="/asset/clock.png" alt="clock">${data.datetime}</span>
+        <span class="time"><img src="../asset/clock.png" alt="clock">${data.datetime}</span>
     </div>
 </div>`
 }
