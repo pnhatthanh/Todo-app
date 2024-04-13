@@ -13,7 +13,7 @@ new_task.addEventListener('click', () => {
     document.querySelector(".box").style.display = 'block';
 })
 document.querySelector(".logout").addEventListener('click',()=>{
-    window.location.href='/login/login.html';
+    window.location.href='../login/index.html';
 })
 document.querySelector(".close").addEventListener('click', closeBox)
 document.querySelector(".box").addEventListener('click', closeBox)
