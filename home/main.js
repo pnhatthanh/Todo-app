@@ -126,8 +126,8 @@ var itemTemplate = (data) => {
             <h3>${data.title}</h3>
         </div>
         <div class="task-action">
-            <img src="/asset/update.png" alt="update" onclick=displayEdit(${data.idTask})>
-            <img src="/asset//delete.png" alt="delete" id="delete" onclick=deltask(${data.idTask})>
+            <img src="../asset/update.png" alt="update" onclick=displayEdit(${data.idTask})>
+            <img src="../asset//delete.png" alt="delete" id="delete" onclick=deltask(${data.idTask})>
         </div>
     </div>
     <div class="task-des">
